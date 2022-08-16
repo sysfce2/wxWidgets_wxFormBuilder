@@ -51,6 +51,13 @@ jobs:
     - uses: actions/checkout@v3.0.2
       with:
         submodules: true
+    - name: Check for Docker
+      run: |
+        (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
+        id
+        ls -la ${GITHUB_WORKSPACE}
+        git config --system -l
+        git config --global -l
     - name: Fetch tags
       run: |
         git fetch --prune --depth=1 --no-recurse-submodules
