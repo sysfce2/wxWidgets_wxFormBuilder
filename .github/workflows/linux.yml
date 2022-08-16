@@ -59,6 +59,9 @@ jobs:
         ls -la ${GITHUB_WORKSPACE}
         git config --system -l || true
         git config --global -l || true
+    - name: Configure container environment
+      run: |
+        git config --global --add safe.directory ${GITHUB_WORKSPACE}
     - name: Fetch tags
       run: |
         git fetch --prune --depth=1 --no-recurse-submodules
