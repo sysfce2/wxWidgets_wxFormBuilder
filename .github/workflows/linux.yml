@@ -55,9 +55,10 @@ jobs:
       run: |
         (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
         id
+        pwd
         ls -la ${GITHUB_WORKSPACE}
-        git config --system -l
-        git config --global -l
+        git config --system -l || true
+        git config --global -l || true
     - name: Fetch tags
       run: |
         git fetch --prune --depth=1 --no-recurse-submodules
